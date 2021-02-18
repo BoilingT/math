@@ -1,0 +1,2 @@
+C:\Users\tobbe\Documents\Coding\C++\vectorMath\x64\Debug\math.exe
+C:\Users\tobbe\Documents\Coding\C++\vectorMath\x64\Debug\math.pdb

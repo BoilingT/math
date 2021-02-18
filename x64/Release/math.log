@@ -1,0 +1,11 @@
+﻿  main.cpp
+C:\Users\tobbe\Documents\Coding\C++\vectorMath\main.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\tobbe\Documents\Coding\C++\vectorMath\vec.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\tobbe\Documents\Coding\C++\vectorMath\vec.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\tobbe\Documents\Coding\C++\vectorMath\vec.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating code
+  95 of 126 functions (75.4%) were compiled, the rest were copied from previous compilation.
+    3 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  math.vcxproj -> C:\Users\tobbe\Documents\Coding\C++\vectorMath\x64\Release\math.exe
