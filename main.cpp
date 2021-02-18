@@ -8,32 +8,33 @@ int main() {
 	//cout << list[0] << endl;
 	float angle = 0;
 	//std::list<float[3]> myList = { {0,0,0} };
-	float myList[][3] = {
-		{1, 2, 3},
-		{4, 5, 6}//,
-		//{7, 8, 9}
+	
+	//myMatrix.create2DArray(2, 2);
+	//myMatrix.createMatrix(2, 2);
+	/*myMatrix.setMatrix(new float[3][3]{
+		{0, 0, 0},
+		{0, 0, 0},
+		{0, 0, 0}
+		});*/
+	//cout << myMatrix.toString() << endl;
+
+	//float** result = myMatrix.createMatrix<float>(3, 3);
+	float list[][3] = {
+		{1,0,0},
+		{0,1,0},
+		{0,0,1}
 	};
-	matrix<3, 2> myMatrix(myList);
 
-	//column x rows
-	matrix<1, 3> multMatrix(new float[][1]{
-		{1},
-		{1},
-		{1}
-		});
+	matrix<3, 3> myMatrix(list);
 
-	cout << multMatrix.toString() << endl;
-	cout << myMatrix.mult(multMatrix).toString() << endl;
-	//cout << multMatrix.mult(myMatrix).toString() << endl;
+	float list2[][3] = {
+		{2,0,0}
+	};
+	
+	cout << myMatrix.toString() << endl;
 
-	/*Vec3<3> rotationMatrix =
-	{ new float[]
-		{
-		cos(angle), -sin(angle), 0.f,
-		sin(angle), cos(angle), 0.f,
-		0.f, 0.f, 1.f
-	} 
-	};*/
+
+	cout << myMatrix.set<1, 3>(list2).toString() << endl;
 	
 	
 	system("PAUSE");

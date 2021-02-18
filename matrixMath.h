@@ -3,11 +3,6 @@
 #include <string>
 using namespace std;
 
-class Math {
-public:
-
-};
-
 class Vec3
 {
 
@@ -37,54 +32,106 @@ public:
 	}
 };
 
-template <int cols, int rows>
+template <unsigned int rows, unsigned int collumns>
 class matrix {
+
+private:
+	
+
+
 public:
-	float list[rows][cols];
+	template <typename T>
+	T** createMatrix(int m, int n) {
 
-	matrix(float arr[rows][cols]) {
-		for (int col = 0; col < cols; col++)
+		T** Matrix = 0;
+		Matrix = new T * [m];
+
+		for (int i = 0; i < m; i++)
 		{
-			for (int row = 0; row < rows; row++)
-			{
-				list[row][col] = arr[row][col];
-			}
+			Matrix[i] = new T[n];
 		}
-	}
 
-	string toString() {
-		string str;
-		for (int row = 0; row < rows; row++)
+		for (int i = 0; i < m; i++)
 		{
-			str += "{";
-			for (int col = 0; col < cols; col++)
+			for (int j = 0; j < n; j++)
 			{
-				str += to_string(list[row][col]) + ", ";
-			}
-			if (row < rows-1)
-			{
-				str += "}, ";
-			}
-			else
-			{
-				str += "}";
-			}
-		}
-		return str;
-	}
-
-	template <int C, int R>
-	matrix<C,R> mult(matrix<C, R> Matrix) {
-		
-		for (int i = 0; i < cols; i++)
-		{
-			for (int j = 0; j < rows; j++)
-			{
-				//cout << Matrix.list[i][j];
-				Matrix.list[j][i] += 1.f;
+				Matrix[i][j] = 0;
 			}
 		}
 
 		return Matrix;
 	}
+
+	int collumnCount = 0;
+	int rowCount = 0;
+	float **values = createMatrix<float>(rows, collumns);
+
+	matrix(float arr2d[rows][collumns]) {
+		cout << " rows = " << rows << " cols = " << collumns << endl;
+		collumnCount = collumns;
+		rowCount = rows;
+		set<rows, collumns>(arr2d);
+	}
+	
+	template <int r, int c>
+	matrix set(float arr2d[r][c]) {
+		//cout << "r = " << r << " c = " << c << " rows = " << rows << " cols = " << collumns << endl;
+		if (r == rows && c == collumns)
+		{
+			for (int col = 0; col < collumnCount; col++)
+			{
+				for (int row = 0; row < rowCount; row++)
+				{
+					values[row][col] = arr2d[row][col];
+				}
+			}
+			return *this;
+		}
+		else if (r != rows || c != collumns)
+		{
+			values = 0;
+			values = createMatrix<float>(r, c);
+			collumnCount = c;
+			rowCount = r;
+			for (int col = 0; col < c; col++)
+			{
+				for (int row = 0; row < r; row++)
+				{
+					values[row][col] = arr2d[row][col];
+				}
+			}
+			return *this;
+		}
+	}
+	
+	
+	string toString() {
+		if (this != NULL)
+		{
+			string str;
+			for (int row = 0; row < rowCount; row++)
+			{
+				str += "{";
+				for (int col = 0; col < collumnCount; col++)
+				{
+					str += to_string(values[row][col]) + ", ";
+				}
+				if (row < rowCount-1)
+				{
+					str += "}, ";
+				}
+				else
+				{
+					str += "}";
+				}
+			}
+			return str;
+		}
+		else
+		{
+			return "";
+		}
+	}
+	
+
 };
