@@ -2,3 +2,5 @@ C:\Users\tobbe\Documents\Coding\C++\vectorMath\x64\Debug\math.exe
 C:\Users\tobbe\Documents\Coding\C++\vectorMath\x64\Debug\math.pdb
 C:\Users\to9751\Documents\Coding\c++\vectorMath2\x64\Debug\math.exe
 C:\Users\to9751\Documents\Coding\c++\vectorMath2\x64\Debug\math.pdb
+C:\Users\tobbe\Documents\Coding\C++\vectorMath2\x64\Debug\math.exe
+C:\Users\tobbe\Documents\Coding\C++\vectorMath2\x64\Debug\math.pdb

@@ -140,10 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="matrixMath.cpp" />
+    <ClCompile Include="vectorMath.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="matrixMath.h" />
+    <ClInclude Include="vectorMath.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
