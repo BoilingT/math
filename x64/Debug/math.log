@@ -1,2 +1,7 @@
 ﻿  main.cpp
-  math.vcxproj -> C:\Users\tobbe\Documents\Coding\C++\vectorMath2\x64\Debug\math.exe
+  vectorMath.cpp
+C:\Users\tobbe\Documents\Coding\C++\Math\math\vectorMath.cpp(21,13): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\tobbe\Documents\Coding\C++\Math\math\vectorMath.cpp(45,26): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  LINK : C:\Users\tobbe\Documents\Coding\C++\Math\math\x64\Debug\math.exe not found or not built by the last incremental link; performing full link
+  math.vcxproj -> C:\Users\tobbe\Documents\Coding\C++\Math\math\x64\Debug\math.exe
