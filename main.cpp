@@ -17,6 +17,7 @@ void toArray(vec3 vector, float* out[1][3]) {
 		}
 	}
 }
+
 int main() {
 	float angle = 0;
 
