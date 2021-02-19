@@ -245,10 +245,7 @@ public:
 		{
 			float** product = createMatrix<float>(rows, p);
 			
-			//(x * other.x) + (y * other.y) + (z * other.z)
 			//Go through each row of the first matrix
-
-			//values = createMatrix<float>(n, p);
 
 			for (int row = 0; row < rowCount; row++)
 			{
