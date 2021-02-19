@@ -24,7 +24,6 @@ int main() {
 		{2, 1},
 		{-8, 6}
 	});
-	//myMatrix.set<1,3>(row1.getValues());
 
 	matrix<3, 2> m1(new float[3][2] {
 		{1, 3},
