@@ -32,7 +32,7 @@ int main() {
 	});
 	
 	cout << "m1: \n" << m1.toString() << endl; 
-	cout << "Result: " << (m1.mult<2,2>(m2)).toString() << endl;
+	cout << "Result: \n" << (m1.mult<2,2>(m2)).toString() << endl;
 	
 	system("PAUSE");
 	return 0;
