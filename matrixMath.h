@@ -1,14 +1,14 @@
 #pragma once
 #include <iostream>
 #include <string>
+#define MATH_PI 3.1415926535897932384626433832795 /* PI */
+
 using namespace std;
 
-template <unsigned int rows, unsigned int collumns>
+template <unsigned int rows, unsigned int columns>
 class matrix {
 
 private:
-	float **values = createMatrix<float>(rows, collumns);
-
 	template <typename T>
 	T** createMatrix(int m, int n) {
 
@@ -33,30 +33,37 @@ private:
 	
 public:
 
-	int collumnCount = 0;
+	int columnCount = 0;
 	int rowCount = 0;
+	float** values = createMatrix<float>(rows, columns);
 
 	//Create a matrix containing only zeros (0).
 	matrix() {
-		collumnCount = collumns;
+		columnCount = columns;
 		rowCount = rows;
 	}
 
-	//Create a matrix with specified data.
-	matrix(float arr2d[rows][collumns]) {
-		collumnCount = collumns;
+	matrix(float* arr1d) {
+		columnCount = columns;
 		rowCount = rows;
-		set<rows, collumns>(arr2d);
+		set<rows, columns>(arr1d);
+	}
+
+	//Create a matrix with specified data.
+	matrix(float arr2d[rows][columns]) {
+		columnCount = columns;
+		rowCount = rows;
+		set<rows, columns>(arr2d);
 	}
 
 	//Set new data into the matrix or new data with different dimensions to create a whole new and different matrix.
 	//Takes an 2d array as input.
 	template <int r, int c>
 	matrix set(float arr2d[r][c]) {
-		//cout << "r = " << r << " c = " << c << " rows = " << rows << " cols = " << collumns << endl;
-		if (r == rows && c == collumns)
+		//cout << "r = " << r << " c = " << c << " rows = " << rows << " cols = " << columns << endl;
+		if (r == rows && c == columns)
 		{
-			for (int col = 0; col < collumnCount; col++)
+			for (int col = 0; col < columnCount; col++)
 			{
 				for (int row = 0; row < rowCount; row++)
 				{
@@ -65,11 +72,11 @@ public:
 			}
 			return *this;
 		}
-		else if (r != rows || c != collumns)
+		else if (r != rows || c != columns)
 		{
 			values = 0;
 			values = createMatrix<float>(r, c);
-			collumnCount = c;
+			columnCount = c;
 			rowCount = r;
 			for (int col = 0; col < c; col++)
 			{
@@ -86,10 +93,10 @@ public:
 	//Takes a one dimensional array (like a vector).
 	template <int r, int c>
 	matrix set(float * arr1d) {
-		//cout << "r = " << r << " c = " << c << " rows = " << rows << " cols = " << collumns << endl;
-		if (r == rows && c == collumns)
+		//cout << "r = " << r << " c = " << c << " rows = " << rows << " cols = " << columns << endl;
+		if (r == rows && c == columns)
 		{
-			for (int col = 0; col < collumnCount; col++)
+			for (int col = 0; col < columnCount; col++)
 			{
 				for (int row = 0; row < rowCount; row++)
 				{
@@ -98,11 +105,11 @@ public:
 			}
 			return *this;
 		}
-		else if (r != rows || c != collumns)
+		else if (r != rows || c != columns)
 		{
 			values = 0;
 			values = createMatrix<float>(r, c);
-			collumnCount = c;
+			columnCount = c;
 			rowCount = r;
 			for (int col = 0; col < c; col++)
 			{
@@ -122,19 +129,12 @@ public:
 			string str;
 			for (int row = 0; row < rowCount; row++)
 			{
-				str += "{";
-				for (int col = 0; col < collumnCount; col++)
+				str += "{  ";
+				for (int col = 0; col < columnCount; col++)
 				{
-					str += to_string(values[row][col]) + ", ";
+					str += to_string(values[row][col]) + "  ";
 				}
-				if (row < rowCount-1)
-				{
-					str += "}, ";
-				}
-				else
-				{
-					str += "}";
-				}
+				str += "}\n";
 			}
 			return str;
 		}
@@ -146,11 +146,11 @@ public:
 	
 	///Add two matrices together.
 	matrix add(matrix addMatrix) {
-		if (collumnCount == addMatrix.collumnCount && rowCount == addMatrix.rowCount)
+		if (columnCount == addMatrix.columnCount && rowCount == addMatrix.rowCount)
 		{
 			for (int i = 0; i < rowCount; i++)
 			{
-				for (int j = 0; j < collumnCount; j++)
+				for (int j = 0; j < columnCount; j++)
 				{
 					values[i][j] += addMatrix.values[i][j];
 				}
@@ -159,11 +159,12 @@ public:
 		return *this;
 	}
 
+	//Add a number to all the values in this matrix
 	matrix add(float numb) {
 
 		for (int i = 0; i < rowCount; i++)
 		{
-			for (int j = 0; j < collumnCount; j++)
+			for (int j = 0; j < columnCount; j++)
 			{
 				values[i][j] += numb;
 			}
@@ -171,12 +172,13 @@ public:
 		return *this;
 	}
 
+	//Subtract a matrix with another
 	matrix subtract(matrix subratctMatrix) {
-		if (collumnCount == subratctMatrix.collumnCount && rowCount == subratctMatrix.rowCount)
+		if (columnCount == subratctMatrix.columnCount && rowCount == subratctMatrix.rowCount)
 		{
 			for (int i = 0; i < rowCount; i++)
 			{
-				for (int j = 0; j < collumnCount; j++)
+				for (int j = 0; j < columnCount; j++)
 				{
 					values[i][j] -= subratctMatrix.values[i][j];
 				}
@@ -185,11 +187,12 @@ public:
 		return *this;
 	}
 
+	//Subtract a number from all of the values of this matrix
 	matrix subtract(float numb) {
 
 		for (int i = 0; i < rowCount; i++)
 		{
-			for (int j = 0; j < collumnCount; j++)
+			for (int j = 0; j < columnCount; j++)
 			{
 				values[i][j] -= numb;
 			}
@@ -197,12 +200,13 @@ public:
 		return *this;
 	}
 
+
 	matrix divide(matrix divideMatrix) {
-		if (collumnCount == divideMatrix.collumnCount && rowCount == divideMatrix.rowCount)
+		if (columnCount == divideMatrix.columnCount && rowCount == divideMatrix.rowCount)
 		{
 			for (int i = 0; i < rowCount; i++)
 			{
-				for (int j = 0; j < collumnCount; j++)
+				for (int j = 0; j < columnCount; j++)
 				{
 					values[i][j] /= divideMatrix.values[i][j];
 				}
@@ -214,7 +218,7 @@ public:
 	matrix divide(float scaler) {
 		for (int i = 0; i < rowCount; i++)
 		{
-			for (int j = 0; j < collumnCount; j++)
+			for (int j = 0; j < columnCount; j++)
 			{
 				values[i][j] /= scaler;
 			}
@@ -226,7 +230,7 @@ public:
 	matrix scale(float scaler) {
 		for (int i = 0; i < rowCount; i++)
 		{
-			for (int j = 0; j < collumnCount; j++)
+			for (int j = 0; j < columnCount; j++)
 			{
 				values[i][j] *= scaler;
 			}
@@ -235,8 +239,49 @@ public:
 	}
 
 	//Multiply two matricies
-	template <int r, int c>
-	matrix mult(matrix<r, c> multMatrix) {
-		return *this;
+	template <int n, int p>
+	auto mult(matrix<n, p> multMatrix) {
+		if (columnCount == n)
+		{
+			float** product = createMatrix<float>(rows, p);
+			
+			//(x * other.x) + (y * other.y) + (z * other.z)
+			//Go through each row of the first matrix
+
+			//values = createMatrix<float>(n, p);
+
+			for (int row = 0; row < rowCount; row++)
+			{
+				for (int column = 0; column < columnCount; column++)
+				{
+					for (int inner = 0; inner < columnCount; inner++)
+					{
+						product[row][column] += (values[row][inner] * multMatrix.values[inner][column]);
+
+					}
+					//cout << product[row][column] << ", ";
+				}
+				//cout << "\n";
+			}
+			
+			float result[rows][p];
+
+			for (int i = 0; i < rows; i++)
+			{
+				for (int j = 0; j < p; j++)
+				{
+					result[i][j] = product[i][j];
+				}
+			}
+
+			matrix<rows, p> res(result);
+
+			return res;
+		}
+		else
+		{
+			cerr << "Error: Can not multiply: column count isn't the same as the other's row count" << endl;
+			return *this;
+		}
 	}
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 class vectorMath
 {
@@ -15,6 +16,14 @@ public:
 	std::string toString();
 
 	float* getValues();
+
+	float magnitude();
+	float dotProduct(vec3 vec);
+	float dotProduct(vec3 vec, std::string str);
+
+	float operator * (vec3 other) {
+		return (x * other.x) + (y * other.y) + (z * other.z);
+	}
 };
 
 class vec4 {

@@ -33,23 +33,26 @@ int main() {
 	//cout << myMatrix.toString() << endl;
 
 	//float** result = myMatrix.createMatrix<float>(3, 3);
-	float list[3][3] = {
-		{1,0,0},
-		{0,2,0},
-		{0,0,3}
-	};
-
-	float list2[1][3] = {
-		{1, 2, 3}
-	};
 
 	vec3 row1 = { 1, 2, 3 };
 
-	matrix<1,3> myMatrix(list2);
+	matrix<2, 2> m2(new float[2][2]{
+		{2, 1},
+		{-8, 6}
+	});
+	//myMatrix.set<1,3>(row1.getValues());
+
+	matrix<3, 2> m1(new float[3][2] {
+		{1, 3},
+		{4, -1},
+		{-5, 10}
+	});
 	
-	cout << myMatrix.toString() << endl; 
+	cout << "m1: \n" << m1.toString() << endl; 
 	//cout << row1.toString() << endl;
-	cout << "Result: " << (myMatrix.add(1)).toString() << endl;
+	cout << "Result: " << (m1.mult<2,2>(m2)).toString() << endl;
+
+	//cout << "Dot product: " << vec3(1, 0, 0).dotProduct(vec3(1, 1, 0), "degree") << endl;
 	
 	//cout << myMatrix.toString() << endl;
 	    
