@@ -249,20 +249,23 @@ public:
 
 			for (int row = 0; row < rowCount; row++)
 			{
-				for (int column = 0; column < columnCount; column++)
+				for (int column = 0; column < p; column++)
 				{
+					//Calculate the dot product
 					for (int inner = 0; inner < columnCount; inner++)
 					{
+						//cout << " Inner: " << inner << "Column: " << column << endl;
+						//cout << "values: " << values[row][inner] << " * " << " multvalues: " << multMatrix.values[inner][column] << endl;
 						product[row][column] += (values[row][inner] * multMatrix.values[inner][column]);
-
 					}
-					//cout << product[row][column] << ", ";
+					cout << product[row][column] << ", ";
 				}
-				//cout << "\n";
+				cout << "\n";
 			}
 			
 			float result[rows][p];
 
+			
 			for (int i = 0; i < rows; i++)
 			{
 				for (int j = 0; j < p; j++)
@@ -278,7 +281,8 @@ public:
 		else
 		{
 			cerr << "Error: Can not multiply: column count isn't the same as the other's row count" << endl;
-			return *this;
+			matrix<rows, p> null;
+			return null;
 		}
 	}
 };
