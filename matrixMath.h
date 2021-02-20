@@ -258,9 +258,9 @@ public:
 						//cout << "values: " << values[row][inner] << " * " << " multvalues: " << multMatrix.values[inner][column] << endl;
 						product[row][column] += (values[row][inner] * multMatrix.values[inner][column]);
 					}
-					cout << product[row][column] << ", ";
+					//cout << product[row][column] << ", ";
 				}
-				cout << "\n";
+				//cout << "\n";
 			}
 			
 			float result[rows][p];
