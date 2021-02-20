@@ -264,19 +264,19 @@ public:
 			}
 			
 			float result[rows][p];
-
+			values = createMatrix<float>(rows, p);
 			
 			for (int i = 0; i < rows; i++)
 			{
 				for (int j = 0; j < p; j++)
 				{
-					result[i][j] = product[i][j];
+					values[i][j] = product[i][j];
 				}
 			}
 
-			matrix<rows, p> res(result);
+			//matrix<rows, p> res(result);
 
-			return res;
+			return *this;
 		}
 		else
 		{
